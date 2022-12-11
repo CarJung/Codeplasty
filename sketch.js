@@ -3,6 +3,7 @@ const len = density.lenght
 let backColor = "white";
 let charColor = "black";
 let myfont;
+let tytul;
 let t=0;
 
 
@@ -25,7 +26,10 @@ const numCells= cols*rows;
 let values = [];
 
 
+function preload(){
+  tytul=loadImage('title.png')
 
+}
 
 
 
@@ -37,7 +41,7 @@ function setup() {
   frameRate(60)
   // noCanvas();
   
-  textSize(11)
+  
   fill(charColor)
   
 
@@ -79,6 +83,8 @@ function draw() {
   background(0);
   screen1()
   screen2()
+  image(tytul,0,1400)
+
 }
 
 

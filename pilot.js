@@ -1,15 +1,5 @@
-let shared;
-let button;
-let slider1
-let slider2;
-let slider3;
-let slider4;
 let currentQuestion = 0;
 
-let x1 = 0;
-let y1 =  windowHeight* 0.4;
-let x2 = windowWidth *0.52;
-let y2 =  windowHeight;
 
 let textbutton = "";
 
@@ -76,7 +66,7 @@ function new_question0(){
   if (currentQuestion >= data.length){
     currentQuestion = 0;
   }
-  httpPost("https://human-tech-hackaton-22.vercel.app/api/codeplasty-transparency-two}", "json", { transparencyTwoChange: 1 });
+  httpPost("https://human-tech-hackaton-22.vercel.app/api/codeplasty-transparency-two", "json", { transparencyTwoChange: 1 });
 }
 
 function draw() {
@@ -90,29 +80,29 @@ function draw() {
   button_ans1.mousePressed(new_question1);
   button_ans2.mousePressed(new_question0);
 
-  fill(kolor);
-  rect(x1, y1, x2, y2);
+  // fill(kolor);
+  // rect(x1, y1, x2, y2);
   
 }
 
-function mousePressed() {
-  if ((mouseX > 0) && (mouseX < windowWidth *0.52) && (mouseY > windowHeight* 0.4) && (mouseY < windowsHeight)   ){
+// function mousePressed() {
+//   if ((mouseX > 0) && (mouseX < windowWidth *0.52) && (mouseY > windowHeight* 0.4) && (mouseY < windowsHeight)   ){
     
-    fill(255);
-  }else if((windowWidth *0.52 > 40) && (mouseX < windowWidth) && (mouseY > windowHeight* 0.4) && (mouseY < windowsHeight)){
+//     fill(255);
+//   }else if((windowWidth *0.52 > 40) && (mouseX < windowWidth) && (mouseY > windowHeight* 0.4) && (mouseY < windowsHeight)){
     
-    fill(255);
-  }
+//     fill(255);
+//   }
 
-}
+// }
 
-function mouseReleased(){
-  if ((mouseX > 0) && (mouseX < windowWidth *0.52) && (mouseY > windowHeight* 0.4) && (mouseY < windowsHeight)   ){
+// function mouseReleased(){
+//   if ((mouseX > 0) && (mouseX < windowWidth *0.52) && (mouseY > windowHeight* 0.4) && (mouseY < windowsHeight)   ){
 
-    fill(1,1,1,0);
-  }else if((mouseX  > windowWidth *0.52) && (mouseX < windowWidth) && (mouseY > windowHeight* 0.4) && (mouseY < windowsHeight)){
+//     fill(1,1,1,0);
+//   }else if((mouseX  > windowWidth *0.52) && (mouseX < windowWidth) && (mouseY > windowHeight* 0.4) && (mouseY < windowsHeight)){
     
-    fill(1,1,1,0);
-  }
+//     fill(1,1,1,0);
+//   }
 
-}
+// }
