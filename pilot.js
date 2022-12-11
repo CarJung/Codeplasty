@@ -4,66 +4,115 @@ let slider1
 let slider2;
 let slider3;
 let slider4;
+let currentQuestion = 0;
+
+let x1 = 0;
+let y1 =  windowHeight* 0.4;
+let x2 = windowWidth *0.52;
+let y2 =  windowHeight;
+
+let textbutton = "";
+
+const data = [
+  {question : "Kiedyś świat był lepszy.",
+  options : [
+      "TAK",
+      "NIE"
+    ]
+  },
+  {question : "Czy konflikty zbrojne powodują rozwój technologiczny?",
+  options : [
+      "TAK",
+      "NIE"
+    ]
+  },
+  {question : "Czy istnieje jakaś elektronika, bez której nie wyobrażasz sobie swojego życia?",
+  options : [
+      "TAK",
+      "NIE"
+    ]
+  },
+  {question : "Czy istnieje coś takiego jak postęp technologiczny?",
+  options : [
+      "TAK",
+      "NIE"
+    ]
+  },
+]
 
 
 function preload() {
-  partyConnect(
-    "wss://deepstream-server-1.herokuapp.com", // to jest teoretycznie server testowy na którym testowaliśmy nasze projekty
-    //"wss://p5-party.vercel.app", // a to jest nasz serwer który obsugiwał połączenie ale poza django nie działa z nieznanego powodu
-    "hello_party",
-    "main"
-  );
-  shared = partyLoadShared("shared", { c: 100, x:100, y:100, w:20, h:20});
-
+  myfont = loadFont("Audiowide-Regular.ttf");
 }
 
 function setup() {
-  createCanvas(200, 400);
-  noStroke();
-  rectMode(CENTER)
-  
+  createCanvas(windowWidth, windowHeight);  
+  button_ans1 = createButton(textbutton, );
+  button_ans1.position(0, windowHeight* 0.4);
+  button_ans1.size(windowWidth*0.52, windowHeight * 0.6);
+  button_ans1.style(
+    'background-color', color(0, 100, 25, 50)
+  )
 
-  button = createButton("colorchange")
-  button.position(100,150)
-  button.mousePressed(changeBG)
-  
-
-  slider1 = createSlider(0, 400, 100);
-  slider1.position(100, 200);
-  slider1.style('width', '80px');
-
-  slider2 = createSlider(0, 400, 100);
-  slider2.position(100, 250);
-  slider2.style('width', '80px');
-
-  slider3 = createSlider(10, 150, 100);
-  slider3.position(100, 300);
-  slider3.style('width', '80px');
-
-  slider4 = createSlider(10, 150, 100);
-  slider4.position(100, 350);
-  slider4.style('width', '80px');
-
-
-
-
-  
+  button_ans2 = createButton(textbutton, data[currentQuestion].options[1]);
+  button_ans2.position(windowWidth *0.52, windowHeight* 0.4);
+  button_ans2.size(windowWidth*0.48, windowHeight * 0.6);
+  button_ans2.style(
+    'background-color', color(220, 0, 0, 50)
+  )
 }
 
 
+function new_question1(){
+  currentQuestion++;
+  if (currentQuestion >= data.length){
+    currentQuestion = 0;
+  }
+  httpPost("https://human-tech-hackaton-22.vercel.app/api/codeplasty-transparency-one", "json", { transparencyOneChange: 1 });
+}
+  
+function new_question0(){
+  currentQuestion++;
+  if (currentQuestion >= data.length){
+    currentQuestion = 0;
+  }
+  httpPost("https://human-tech-hackaton-22.vercel.app/api/codeplasty-transparency-two}", "json", { transparencyTwoChange: 1 });
+}
 
 function draw() {
-  background("#ffcccc");
-  fill("#000066");
-  shared.x = slider1.value()
-  shared.y = slider2.value()
-  shared.w = slider3.value()
-  shared.h = slider4.value()
+  background(50);
+  fill(20,100 , 20);
+  textSize(30);
+  textAlign(CENTER);
+  textFont(myfont);
+  text(data[currentQuestion].question, windowWidth*0.15, windowHeight* 0.1,  windowWidth*0.7);
+
+  button_ans1.mousePressed(new_question1);
+  button_ans2.mousePressed(new_question0);
+
+  fill(kolor);
+  rect(x1, y1, x2, y2);
+  
 }
 
-function changeBG() {
-  shared.c = random(255);
-  
- 
+function mousePressed() {
+  if ((mouseX > 0) && (mouseX < windowWidth *0.52) && (mouseY > windowHeight* 0.4) && (mouseY < windowsHeight)   ){
+    
+    fill(255);
+  }else if((windowWidth *0.52 > 40) && (mouseX < windowWidth) && (mouseY > windowHeight* 0.4) && (mouseY < windowsHeight)){
+    
+    fill(255);
+  }
+
+}
+
+function mouseReleased(){
+  if ((mouseX > 0) && (mouseX < windowWidth *0.52) && (mouseY > windowHeight* 0.4) && (mouseY < windowsHeight)   ){
+
+    fill(1,1,1,0);
+  }else if((mouseX  > windowWidth *0.52) && (mouseX < windowWidth) && (mouseY > windowHeight* 0.4) && (mouseY < windowsHeight)){
+    
+    fill(1,1,1,0);
+  }
 
 }
