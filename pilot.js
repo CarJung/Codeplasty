@@ -4,25 +4,25 @@ let currentQuestion = 0;
 let textbutton = "";
 
 const data = [
-  {question : "Kiedyś świat był lepszy.",
+  {question : "W przyszłoścci świat będzie lepszy.",
   options : [
       "TAK",
       "NIE"
     ]
   },
-  {question : "Czy konflikty zbrojne powodują rozwój technologiczny?",
+  {question : "Technologia zmierza w dobrym kierunku.",
   options : [
       "TAK",
       "NIE"
     ]
   },
-  {question : "Czy istnieje jakaś elektronika, bez której nie wyobrażasz sobie swojego życia?",
+  {question : "Technologia jest potrzebna.",
   options : [
       "TAK",
       "NIE"
     ]
   },
-  {question : "Czy istnieje coś takiego jak postęp technologiczny?",
+  {question : "Czy tehnologia nasz uratuje?",
   options : [
       "TAK",
       "NIE"
@@ -37,14 +37,14 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);  
-  button_ans1 = createButton(textbutton, );
+  button_ans1 = createButton("TAK" );
   button_ans1.position(0, windowHeight* 0.4);
   button_ans1.size(windowWidth*0.52, windowHeight * 0.6);
   button_ans1.style(
     'background-color', color(0, 100, 25, 50)
   )
 
-  button_ans2 = createButton(textbutton, data[currentQuestion].options[1]);
+  button_ans2 = createButton("NIE" );
   button_ans2.position(windowWidth *0.52, windowHeight* 0.4);
   button_ans2.size(windowWidth*0.48, windowHeight * 0.6);
   button_ans2.style(
