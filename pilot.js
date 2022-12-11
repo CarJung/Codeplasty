@@ -8,8 +8,8 @@ let slider4;
 
 function preload() {
   partyConnect(
-    "wss://deepstream-server-1.herokuapp.com",
-    //"wss://p5-party.vercel.app",
+    "wss://deepstream-server-1.herokuapp.com", // to jest teoretycznie server testowy na którym testowaliśmy nasze projekty
+    //"wss://p5-party.vercel.app", // a to jest nasz serwer który obsugiwał połączenie ale poza django nie działa z nieznanego powodu
     "hello_party",
     "main"
   );
